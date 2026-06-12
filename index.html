@@ -852,8 +852,8 @@ async function t2Convert() {
     spine.push('vol'+idx); toc.push({href:fn, label:volLabel}); idx++;
 
     for (const name of srcNames.sort()) {
-      if (!name.endsWith('.xhtml') && !name.endsWith('.html')) continue;
       const low = name.toLowerCase();
+      if (!low.endsWith('.xhtml') && !low.endsWith('.html') && !low.endsWith('.htm')) continue;
       if (['nav','toc','cover'].some(x => low.includes(x))) continue;
       const content = await srcZip.files[name].async('text');
       const fileName = name.split('/').pop();
